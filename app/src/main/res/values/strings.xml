@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">SongDBManager</string>
+    <string name="Input1">Title</string>
+    <string name="InputPrompt1">Enter song title here</string>
+    <string name="Input2">Singers</string>
+    <string name="InputPrompt2">Enter singers(Plural) name here</string>
+    <string name="Input3">Year</string>
+    <string name="InputPrompt3">Enter year of release here</string>
+    <string name="Input4">Stars</string>
+    <string name="Input4.1">1</string>
+    <string name="Input4.2">2</string>
+    <string name="Input4.3">3</string>
+    <string name="Input4.4">4</string>
+    <string name="Input4.5">5</string>
+    <string name="FinalButton">Submit</string>
+    <string name="ViewListings">Show List</string>
+</resources>
