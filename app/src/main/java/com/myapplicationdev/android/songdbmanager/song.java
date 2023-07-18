@@ -9,11 +9,25 @@ public class song {
     private int year;
     private int stars;
 
-    public song (int id,
-    String title,
-    String singers,
-    int year,
-    int stars
+
+
+    public song (
+                 String title,
+                 String singers,
+                 int year,
+                 int stars
+    ){
+        this.title=title;
+        this.singers=singers;
+        this.year=year;
+        this.stars=stars;
+    }
+    public song (
+            int id,
+            String title,
+            String singers,
+            int year,
+            int stars
     ){
         this.id=id;
         this.title=title;
@@ -40,12 +54,21 @@ public class song {
         return singers;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @NonNull
     @Override
     public String toString() {
-        return id + "\n" + title+"\n"+year + "\n" + stars + "\n" + singers;
+        return "Song{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", singers='" + singers + '\'' +
+                ", year=" + year +
+                ", stars=" + stars +
+                '}';
     }
-
 }
 
 
