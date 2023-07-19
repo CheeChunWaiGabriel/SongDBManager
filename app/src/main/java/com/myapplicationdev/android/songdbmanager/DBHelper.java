@@ -97,4 +97,61 @@ public class DBHelper extends SQLiteOpenHelper {    // Start version with 1
         cursor.close();
         db.close();
         return songlist;
+    }
+    public ArrayList<song> getBestSongs() {
+        ArrayList<song> bestsonglist = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns= {COLUMN_ID, COLUMN_TITLE, COLUMN_SINGERS,COLUMN_YEAR,COLUMN_STARS};
+        String condition = COLUMN_STARS + "= ?";
+        String[] args = {"5"};
+        Cursor cursor = db.query(TABLE_SONG, columns, condition, args,
+                null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String title=cursor.getString(1);
+                String singers = cursor.getString(2);
+                int year=cursor.getInt(3);
+                int stars=cursor.getInt(4);
+                song Song = new song(id,title,singers,year,stars);
+                bestsonglist.add(Song);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return bestsonglist;
+    }
+    public int updateSong(song Song) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_TITLE, Song.getTitle());
+        values.put(COLUMN_SINGERS, Song.getSingers());
+        values.put(COLUMN_YEAR, Song.getYear());
+        values.put(COLUMN_STARS, Song.getStars());
+        String whereClause = COLUMN_ID + "=?";
+        String[] whereArgs = {String.valueOf(Song.getId())};
+        int result=db.update(TABLE_SONG, values, whereClause, whereArgs);
+
+        if (result < 1) {
+            Log.d("DBHelper", "Update failed");
+
+            db.close();
+            return result;
+        }
+
+
+        return result;
+    }
+    public void deleteSong(int songId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String whereClause = COLUMN_ID + "=?";
+        String[] whereArgs = {String.valueOf(songId)};
+       db.delete(TABLE_SONG, whereClause, whereArgs);
+       db.close();
     }}
+
+
+
