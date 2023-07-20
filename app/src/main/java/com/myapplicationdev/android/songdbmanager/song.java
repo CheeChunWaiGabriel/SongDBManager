@@ -2,7 +2,9 @@ package com.myapplicationdev.android.songdbmanager;
 
 import androidx.annotation.NonNull;
 
-public class song {
+import java.io.Serializable;
+
+public class song implements Serializable {
     private int id;
     private String title;
     private String singers;

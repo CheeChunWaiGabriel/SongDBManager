@@ -27,7 +27,8 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         DBHelper db = new DBHelper(MainActivity2.this);
         Intent intent = getIntent();
-        song clickedSong = intent.getParcelableExtra("song");
+        song clickedSong = (song) intent.getSerializableExtra("song");
+
         btnUpdate=findViewById(R.id.btnupdate);
         btnCancel=findViewById(R.id.btnCancel);
         btnDelete=findViewById(R.id.btndelete);
@@ -38,7 +39,7 @@ public class MainActivity2 extends AppCompatActivity {
         RadioGroupRating=findViewById(R.id.radio_group);
 
         selectedSong = clickedSong;
-        YearInput.setText(clickedSong.getYear());
+        YearInput.setText(String.valueOf(clickedSong.getYear()));
         SongInput.setText(clickedSong.getTitle());
         SingerInput.setText(clickedSong.getSingers());
         setStarsSelection(selectedSong.getStars());
@@ -61,6 +62,14 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 db.deleteSong(selectedSong.getId());
                 db.close();
+                finish();
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+                startActivity(intent);
                 finish();
             }
         });

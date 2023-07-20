@@ -47,7 +47,7 @@ public class EditActivity extends AppCompatActivity {
                 song ClickedSong = songs.get(position);
                 Intent i = new Intent(EditActivity.this,
                         MainActivity2.class);
-                i.putExtra("song", (CharSequence) ClickedSong);
+                i.putExtra("song", ClickedSong);
                 startActivity(i);
             }
         });
