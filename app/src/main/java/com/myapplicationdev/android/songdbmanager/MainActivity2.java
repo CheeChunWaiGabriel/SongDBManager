@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
+
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -68,7 +68,7 @@ public class MainActivity2 extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+                Intent intent = new Intent(MainActivity2.this, EditActivity.class);
                 startActivity(intent);
                 finish();
             }

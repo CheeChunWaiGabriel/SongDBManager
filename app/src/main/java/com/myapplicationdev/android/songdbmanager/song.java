@@ -71,9 +71,6 @@ public class song implements Serializable {
         return singers;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @NonNull
     @Override
