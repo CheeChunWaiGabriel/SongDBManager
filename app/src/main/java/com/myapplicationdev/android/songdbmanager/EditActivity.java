@@ -57,5 +57,15 @@ public class EditActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DBHelper db = new DBHelper(EditActivity.this);
+        songsList=db.getAllSongs();
+
+        adapter.clear();
+        adapter.addAll(songsList);
+        adapter.notifyDataSetChanged();
+    }
 
 }
